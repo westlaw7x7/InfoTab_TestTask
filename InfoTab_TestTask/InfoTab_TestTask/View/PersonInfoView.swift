@@ -106,10 +106,12 @@ final class PersonInfoView: UIView {
     @objc func addButtonHandler(_ sender: UIButton) {
         addChild()
         delegate?.isTapped(true)
+        if arrayOfChild.count == 5 {
+            self.addButton.isHidden = true
+        }
     }
     
     private func addChild() {
-        
         guard nameField.text != "",
               ageField.text != ""
         else
@@ -119,12 +121,7 @@ final class PersonInfoView: UIView {
         
         if arrayOfChild.count < 5 {
             arrayOfChild.append(Child(name: name!, age: age!))
-        } else if arrayOfChild.count == 5 {
-            self.delegate?.arrayIsFull(true)
-            self.addButton.isHidden = true
-            
         }
-        
     }
     
     private func configureUI() {
