@@ -11,7 +11,6 @@ protocol Delegate {
     func isTapped(_ tap: Bool)
     
     func arrayIsFull(_ tap: Bool)
-    
 }
 
 final class PersonInfoView: UIView {
@@ -95,7 +94,6 @@ final class PersonInfoView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.configureUI()
-        
     }
     
     required init?(coder aDecoder: NSCoder) {

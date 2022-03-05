@@ -32,8 +32,6 @@ class TableViewController: UIViewController {
     
     var safeArea: UILayoutGuide!
     
-    var someTestArray = ["Jim", "Billy", "Tom", "Jimbo"]
-    
     private var personInfoView = PersonInfoView()
     
     var delegate: Delegate?
@@ -78,6 +76,7 @@ class TableViewController: UIViewController {
                 self.personInfoView.arrayOfChild.removeAll()
                 self.personInfoView.nameField.text = ""
                 self.personInfoView.ageField.text = ""
+                self.personInfoView.addButton.isHidden = false
                 self.tableView.reloadData()
             }
         
@@ -162,6 +161,7 @@ extension TableViewController: UITableViewDelegate {
               if editingStyle == .delete {
                   self.personInfoView.arrayOfChild.remove(at: indexPath.row)
                   tableView.deleteRows(at: [indexPath], with: .fade)
+                  self.personInfoView.addButton.isHidden = false
               }
      }
     
