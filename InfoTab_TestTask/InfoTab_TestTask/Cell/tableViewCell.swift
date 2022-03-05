@@ -13,6 +13,8 @@ class TableViewCell: UITableViewCell {
     //    MARK: - Subviews
     static let reusedIdentifier = "PersonCell"
     
+    var delegate: Delegate?
+    
     var nameLabel: UILabel = {
         let l = UILabel()
         l.translatesAutoresizingMaskIntoConstraints = false
@@ -56,15 +58,6 @@ class TableViewCell: UITableViewCell {
         return l
     }()
     
-    let deleteButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Удалить", for: .normal)
-        button.setTitleColor(UIColor.systemBlue, for: .normal)
-        button.layer.cornerRadius = 15.0
-        
-        return button
-    }()
     
     //    MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -85,7 +78,6 @@ class TableViewCell: UITableViewCell {
         self.addSubview(ageLabel)
         self.addSubview(nameField)
         self.addSubview(ageField)
-        self.addSubview(deleteButton)
         self.setupConstraints()
     }
     
@@ -112,9 +104,6 @@ class TableViewCell: UITableViewCell {
             self.ageField.leftAnchor.constraint(equalTo: s.leftAnchor, constant: 20),
             self.ageField.widthAnchor.constraint(equalToConstant: 200),
             
-            self.deleteButton.leftAnchor.constraint(equalTo: nameLabel.rightAnchor, constant: 20),
-            self.deleteButton.widthAnchor.constraint(equalToConstant: 50),
-            self.deleteButton.topAnchor.constraint(equalTo: s.topAnchor, constant: 5)
         ])
     }
     

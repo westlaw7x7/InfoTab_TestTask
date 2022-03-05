@@ -11,6 +11,7 @@ protocol Delegate {
     func isTapped(_ tap: Bool)
     
     func arrayIsFull(_ tap: Bool)
+    
 }
 
 final class PersonInfoView: UIView {

@@ -155,10 +155,21 @@ extension TableViewController: UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         defer { tableView.deselectRow(at: indexPath, animated: true)}
+       
     }
+    
+     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+              if editingStyle == .delete {
+                  self.personInfoView.arrayOfChild.remove(at: indexPath.row)
+                  tableView.deleteRows(at: [indexPath], with: .fade)
+              }
+     }
+    
+    
 }
 
 extension TableViewController: Delegate {
+    
     func arrayIsFull(_ tap: Bool) {
         if tap == true {
             alertOfLimit()
